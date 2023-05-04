@@ -62,7 +62,7 @@
     <string name="pref_theme_light">Светлая</string>
     <string name="pref_theme_dark">Тёмная</string>
     <string name="pref_title_language">Язык</string>
-    <string name="pref_title_minimize_priority">Скрывать уведомление Gadgetbridge</string>
+    <string name="pref_title_minimize_priority">Скрывать уведомление Dabyl</string>
     <string name="pref_summary_minimize_priority_off">Показывает значок в строке состояния и уведомление на экране блокировки</string>
     <string name="pref_summary_minimize_priority_on">Не показывает значок в строке состояния и уведомление на экране блокировки</string>
     <string name="pref_header_notifications">Уведомления</string>
@@ -154,7 +154,7 @@
     <string name="tap_connected_device_for_vibration">Коснитесь подключённого устройства для Вибрации</string>
     <string name="tap_a_device_to_connect">Коснитесь устройства для соединения</string>
     <string name="cannot_connect_bt_address_invalid_">Не удалось соединиться. Неверный адрес Bluetooth\?</string>
-    <string name="gadgetbridge_running_generic">Gadgetbridge запущен</string>
+    <string name="gadgetbridge_running_generic">Dabyl запущен</string>
     <string name="installing_binary_d_d">установка бинарного файла %1$d/%2$d</string>
     <string name="installation_failed_">Установка не удалась</string>
     <string name="installation_successful">Установлено</string>
@@ -841,7 +841,7 @@
     <string name="about_contributors">Соавторы</string>
     <string name="about_core_team_title">Основная команда (в порядке поступления первого кода)</string>
     <string name="about_description_generic">\"Безоблачная\" свободная альтернатива закрытым приложениям от производителей гаджетов.</string>
-    <string name="about_activity_title_generic">О Gadgetbridge</string>
+    <string name="about_activity_title_generic">О DABYL</string>
     <string name="about_title">О программе</string>
     <string name="hr_widget_last_notification">Последнее уведомление</string>
     <string name="pref_qhybrid_save_raw_activity_files">Сохранять необработанные файлы активности</string>
@@ -1291,7 +1291,7 @@
     <string name="button_watchface_edit_name">Изменить имя</string>
     <string name="gpx_receiver_overwrite_some_files">Некоторый файл(ы) уже существует. Перезаписать\?</string>
     <string name="gpx_receiver_files_received">Получен файл(ы) GPX:</string>
-    <string name="gpx_receiver_activity_title">GPX-приемник Gadgetbridge</string>
+    <string name="gpx_receiver_activity_title">GPX-приемник Dabyl</string>
     <string name="devicetype_smaq2oss">SMA-Q2 OSS</string>
     <string name="activity_summary_detail_editing_gpx_track">Редактирование связанного GPX трека</string>
     <string name="activity_summary_detail_clear_gpx_track">Очистить GPX трек</string>
@@ -1423,29 +1423,27 @@
     <string name="watchface_dialog_widget_width">Ширина виджета (в пикселях)</string>
     <string name="prefs_game_mode">Игровой режим</string>
     <string name="prefs_equalizer">Эквалайзер</string>
-    <string name="application_name_banglejs_main">Bangle.js Gadgetbridge</string>
-    <string name="title_activity_controlcenter_banglejs_main">Bangle.js Gadgetbridge</string>
-    <string name="application_name_banglejs_nopebble">Bangle.js Gadgetbridge</string>
-    <string name="about_activity_title_banglejs_nopebble">О Bangle.js Gadgetbridge</string>
-    <string name="application_name_main_nightly">Gadgetbridge (Nightly)</string>
-    <string name="gadgetbridge_running_banglejs_nopebble">Bangle.js запущен</string>
+    <string name="application_name_banglejs_main">DABYL</string>
+    <string name="title_activity_controlcenter_banglejs_main">DABYL</string>
+    <string name="application_name_banglejs_nopebble">Dabyl</string>
+    <string name="about_activity_title_banglejs_nopebble">О Dabyl</string>
+    <string name="application_name_main_nightly">DABYL (Ночной)</string>
+    <string name="gadgetbridge_running_banglejs_nopebble">Dabyl запущен</string>
     <string name="about_description_banglejs_nopebble">Приложение-компаньон для Bangle.js построено на основе проекта Gadgetbridge, с добавленным доступом в Интернет.
 \n
 \nВ соответствии с политикой Google Play Store, мы не можем разместить ссылку для пожертвований в самом приложении, но если вам нравится это приложение, пожалуйста, рассмотрите возможность пожертвования через домашнюю страницу Gadgetbridge ниже.</string>
-    <string name="about_activity_title_main_nightly">О Gadgetbridge Nightly</string>
-    <string name="application_name_main_nopebble">Gadgetbridge (Nightly, без системы Pebble)</string>
+    <string name="about_activity_title_main_nightly">О DABYL Ночной</string>
+    <string name="application_name_main_nopebble">Dabyl (Nightly, без системы Pebble)</string>
     <string name="about_description_main_nightly">\"Безоблачная\" свободная альтернатива закрытым приложениям от производителей гаджетов. \"Ночные\" версии Gadgetbridge. Ночные выпуски Gadgetbridge. Его нельзя установить, если у вас уже установлено приложение Gadgetbridge или Pebble, из-за конфликта в провайдере Pebble.</string>
-    <string name="title_activity_controlcenter_main_nopebble">Gadgetbridge Nightly без Pebble</string>
+    <string name="title_activity_controlcenter_main_nopebble">Dabyl Nightly без Pebble</string>
     <string name="about_description_main_nopebble">\"Безоблачная\" свободная альтернатива закрытым приложениям от производителей гаджетов. \"Ночные\" выпуски Gadgetbridge. В этой версии провайдер Pebble переименован для предотвращения конфликтов, поэтому некоторые из связанных с Pebble интеграции не будут работать, но его можно установить вместе с существующими установками Gadgetbridge.</string>
-    <string name="about_description_banglejs_main">Приложение-компаньон для Bangle.js построено на основе проекта Gadgetbridge, с добавленным доступом в Интернет.
-\n
-\nВ соответствии с политикой Google Play Store, мы не можем разместить ссылку для пожертвований в самом приложении, но если вам нравится это приложение, пожалуйста, рассмотрите возможность пожертвования через домашнюю страницу Gadgetbridge ниже.</string>
-    <string name="about_activity_title_banglejs_main">О Bangle.js Gadgetbridge</string>
-    <string name="gadgetbridge_running_banglejs_main">Bangle.js выполняется</string>
-    <string name="title_activity_controlcenter_banglejs_nopebble">Bangle.js Gadgetbridge</string>
-    <string name="title_activity_controlcenter_main_nightly">Gadgetbridge Nightly</string>
-    <string name="gadgetbridge_running_main_nightly">Nightly GB запущен</string>
-    <string name="about_activity_title_main_nopebble">О Gadgetbridge Nightly без Pebble</string>
+    <string name="about_description_banglejs_main">Приложение-компаньон для Bangle.js построено на основе проекта Gadgetbridge, с добавленным доступом в Интернет.    В соответствии с политикой Google Play Store, мы не можем разместить ссылку для пожертвований в самом приложении, но если вам нравится это приложение, пожалуйста, рассмотрите возможность пожертвования через домашнюю страницу Gadgetbridge ниже.</string>
+    <string name="about_activity_title_banglejs_main">DABYL</string>
+    <string name="gadgetbridge_running_banglejs_main">Приложение-компаньон для Android для Bangle.js, построенное на основе проекта Gadgetbridge, с дополнительным доступом в Интернет.    В соответствии с политикой Google Play Store, мы не можем разместить ссылку для пожертвований в самом приложении, но если вам нравится это приложение, пожалуйста, рассмотрите возможность пожертвования через домашнюю страницу Gadgetbridge ниже.</string>
+    <string name="title_activity_controlcenter_banglejs_nopebble">Dabyl</string>
+    <string name="title_activity_controlcenter_main_nightly">DABYL (Ночной)</string>
+    <string name="gadgetbridge_running_main_nightly">Nightly Dabyl запущен</string>
+    <string name="about_activity_title_main_nopebble">О Dabyl Nightly без Pebble</string>
     <string name="pref_header_connection">Соединение</string>
     <string name="pref_header_display">Дисплей</string>
     <string name="pref_header_health">Здоровье</string>

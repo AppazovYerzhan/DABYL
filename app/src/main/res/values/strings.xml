@@ -6,10 +6,10 @@
     <string name="about_description_generic">Cloudless copylefted libre replacement for closed source Android gadget apps from vendors.</string>
     <string name="gadgetbridge_running_generic">Dabyl running</string>
 
-    <string name="application_name_banglejs_main">Bangle.js DABYL</string>
-    <string name="title_activity_controlcenter_banglejs_main">Bangle.js DABYL</string>
-    <string name="about_activity_title_banglejs_main">About Bangle.js DABYL</string>
-    <string name="about_description_banglejs_main">Android companion app for Bangle.js built on top of the DABYL project, with added Internet Access.\n\nDue to Google Play Store policies, we are not allowed a donation link in the app itself, but if you like this app please consider donating via the Gadgetbridge homepage below.</string>
+    <string name="application_name_banglejs_main">DABYL</string>
+    <string name="title_activity_controlcenter_banglejs_main">DABYL</string>
+    <string name="about_activity_title_banglejs_main">DABYL</string>
+    <string name="about_description_banglejs_main">Android companion app for Bangle.js built on top of the DABYL project, with added Internet Access.  Due to Google Play Store policies, we are not allowed a donation link in the app itself, but if you like this app please consider donating via the Gadgetbridge homepage below.</string>
     <string name="gadgetbridge_running_banglejs_main">Bangle.js running</string>
 
     <string name="application_name_banglejs_nightly">Bangle.js DABYL (Nightly)</string>
@@ -162,9 +162,9 @@
 \n
 \nPROCEED AT YOUR OWN RISK!</string>
     <string name="fw_multi_upgrade_notice">You are about to install the %1$s and %2$s firmware, instead of the ones currently on your Mi Band.</string>
-    <string name="miband_firmware_known">This firmware has been tested and is known to be compatible with Gadgetbridge.</string>
-    <string name="miband_firmware_unknown_warning">"This firmware is untested and may not be compatible with Gadgetbridge.\n\nYou are DISCOURAGED from flashing it!"</string>
-    <string name="miband_firmware_suggest_whitelist">If you still want to proceed and things continue to work properly afterwards, please tell the Gadgetbridge developers to whitelist the %s firmware version.</string>
+    <string name="miband_firmware_known">This firmware has been tested and is known to be compatible with Dabyl.</string>
+    <string name="miband_firmware_unknown_warning">"This firmware is untested and may not be compatible with Dabyl.\n\nYou are DISCOURAGED from flashing it!"</string>
+    <string name="miband_firmware_suggest_whitelist">If you still want to proceed and things continue to work properly afterwards, please tell the Dabyl developers to whitelist the %s firmware version.</string>
     <!-- Strings related to the FwAppInstaller opener activity -->
     <string name="open_fw_installer_info_text">The Firmware/Watchface/App/File Installer allows you to upload/install supported files (firmware, watchfaces, applications, GPS, resources, fonts...) to the device. See some more information in the wiki: https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Firmware-Update</string>
     <string name="open_fw_installer_warning_title">Warning</string>
@@ -497,7 +497,7 @@
     <string name="unknown">Unknown</string>
     <string name="test">Test</string>
     <string name="test_notification">Test notification</string>
-    <string name="this_is_a_test_notification_from_gadgetbridge">This is a test notification from Gadgetbridge</string>
+    <string name="this_is_a_test_notification_from_gadgetbridge">This is a test notification from Dabyl</string>
     <string name="find_my_phone_notification">Find my phone</string>
     <string name="bluetooth_is_not_supported_">Bluetooth is not supported.</string>
     <string name="bluetooth_is_disabled_">Bluetooth is disabled.</string>
