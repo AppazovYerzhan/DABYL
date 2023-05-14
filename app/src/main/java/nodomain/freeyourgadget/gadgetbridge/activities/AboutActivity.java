@@ -20,6 +20,13 @@ package nodomain.freeyourgadget.gadgetbridge.activities;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+
 import nodomain.freeyourgadget.gadgetbridge.BuildConfig;
 
 import nodomain.freeyourgadget.gadgetbridge.R;
@@ -30,18 +37,20 @@ public class AboutActivity extends AbstractGBActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        TextView about_version = findViewById(R.id.about_version);
         TextView about_hash = findViewById(R.id.about_hash);
-        String versionName = BuildConfig.VERSION_NAME;
         String versionHASH = BuildConfig.GIT_HASH_SHORT;
-        about_version.setText(String.format(getString(R.string.about_version), versionName));
         about_hash.setText(String.format(getString(R.string.about_hash), versionHASH));
 
         TextView link1 = findViewById(R.id.links1);
         link1.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView link2 = findViewById(R.id.links2);
-        link2.setMovementMethod(LinkMovementMethod.getInstance());
-        TextView link3 = findViewById(R.id.links3);
-        link3.setMovementMethod(LinkMovementMethod.getInstance());
+
+        ImageSlider imageSlider = findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.yerzhan, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.omar, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.maga, ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
 }

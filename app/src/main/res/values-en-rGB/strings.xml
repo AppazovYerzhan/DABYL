@@ -1261,7 +1261,6 @@
     <string name="menuitem_goal">Activity Goal</string>
     <string name="menuitem_widgets">Widgets</string>
     <string name="menuitem_temperature">Temperature</string>
-    <string name="about_version">Version %s</string>
     <string name="about_title">About</string>
     <string name="about_description_generic">Cloudless copylefted libre replacement for closed source Android gadget apps from vendors.</string>
     <string name="sports_activity_quick_filter_30days">30 days</string>

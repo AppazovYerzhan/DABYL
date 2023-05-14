@@ -38,7 +38,7 @@
 
     <color name="alternate_row_background_light">#FFEDEDED</color>
     <color name="alternate_row_background_dark">#545254</color>
-
+    <color name="lavender">#8692f7</color>
     <drawable name="selected">@color/accent</drawable>
 
 </resources>

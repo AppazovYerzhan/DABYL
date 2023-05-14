@@ -81,7 +81,7 @@ android {
     flavorDimensions "device_type"
     productFlavors {
         main {
-            // Ensure that when starting from scratch, 'main' is selected, not 'banglejs'
+            // Ensure that when starting from scratch, 'main' is selected
             getIsDefault().set(true)
             // the default build product flavor
             dimension "device_type"
@@ -206,8 +206,10 @@ pmd {
 }
 
 dependencies {
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 //    testImplementation "ch.qos.logback:logback-classic:1.1.3"
 //    testImplementation "ch.qos.logback:logback-core:1.1.3"
+
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.mockito:mockito-core:1.10.19"
