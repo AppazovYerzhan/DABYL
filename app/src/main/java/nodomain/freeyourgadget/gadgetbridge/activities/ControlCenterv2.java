@@ -362,10 +362,10 @@ public class ControlCenterv2 extends AppCompatActivity
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivityForResult(settingsIntent, MENU_REFRESH_CODE);
                 return false; //we do not want the drawer menu item to get selected
-            case R.id.action_debug:
-                Intent debugIntent = new Intent(this, DebugActivity.class);
-                startActivity(debugIntent);
-                return false;
+//            case R.id.action_debug:
+//                Intent debugIntent = new Intent(this, DebugActivity.class);
+//                startActivity(debugIntent);
+//                return false;
 //            case R.id.action_data_management:
 //                Intent dbIntent = new Intent(this, DataManagementActivity.class);
 //                startActivity(dbIntent);
