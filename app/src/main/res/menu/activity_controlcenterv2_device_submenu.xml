@@ -18,9 +18,6 @@
     <item
         android:id="@+id/controlcenter_device_submenu_show_details"
         android:title="@string/controlcenter_toggle_details" />
-    <item
-        android:id="@+id/controlcenter_device_submenu_installer"
-        android:title="@string/open_fw_installer_info_text_title" />
 
     <item
         android:id="@+id/controlcenter_device_submenu_remove"

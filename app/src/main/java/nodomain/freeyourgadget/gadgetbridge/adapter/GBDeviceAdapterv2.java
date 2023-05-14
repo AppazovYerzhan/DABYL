@@ -826,8 +826,6 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
         menu.getMenu().findItem(R.id.controlcenter_device_submenu_connect).setVisible(!deviceConnected);
         menu.getMenu().findItem(R.id.controlcenter_device_submenu_disconnect).setVisible(deviceConnected);
         menu.getMenu().findItem(R.id.controlcenter_device_submenu_show_details).setEnabled(showInfoIcon);
-        menu.getMenu().findItem(R.id.controlcenter_device_submenu_installer).setEnabled(deviceConnected);
-        menu.getMenu().findItem(R.id.controlcenter_device_submenu_installer).setVisible(showInstallerItem(device));
 
         menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -875,11 +873,6 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
                     case R.id.controlcenter_device_submenu_set_parent_folder:
                         showSetParentFolderDialog(device);
                         return true;
-                    case R.id.controlcenter_device_submenu_installer:
-                        Intent openFwIntent = new Intent(context, OpenFwAppInstallerActivity.class);
-                        openFwIntent.putExtra(GBDevice.EXTRA_DEVICE, device);
-                        context.startActivity(openFwIntent);
-                        return false;
                 }
                 return false;
             }
