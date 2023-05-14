@@ -22,6 +22,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 
@@ -50,7 +51,8 @@ public class AboutActivity extends AbstractGBActivity {
         slideModels.add(new SlideModel(R.drawable.yerzhan, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.omar, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.maga, ScaleTypes.CENTER_CROP));
-
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+        imageSlider.setSlideAnimation(AnimationTypes.ZOOM_OUT);
+        imageSlider.startSliding(3000);
     }
 }

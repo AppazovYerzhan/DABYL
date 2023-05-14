@@ -3,10 +3,11 @@
     <color name="primary_light" type="color">#b1dff8</color>
     <color name="primarydark_light" type="color">#2896c7</color>
 
-    <color name="primary_dark" type="color">#b1dff8</color>
+    <color name="primary_dark" type="color">#4c5aff</color>
     <color name="primarydark_dark" type="color">#2896c7</color>
 
     <color name="accent" type="color">#7fba23</color>
+    <color name="black" type="color">#000000</color>
 
     <color name="primarytext_light" type="color">#000000</color>
     <color name="primarytext_dark" type="color">#ffffff</color>

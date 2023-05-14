@@ -5,16 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/no_items_bg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:alpha="0.1"
-        android:contentDescription="@string/icon_placeholder"
-        app:srcCompat="@drawable/gadgetbridge_img"
-        app:tint="?attr/textColorPrimary" />
-
     <ScrollView
         android:id="@+id/about_background"
         android:layout_width="match_parent"
@@ -26,6 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -88,13 +80,6 @@
                 android:paddingLeft="@dimen/about_margin"
                 android:paddingRight="@dimen/about_margin">
 
-                <TextView
-                    android:id="@+id/contrib_core_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/about_core_team_title"
-                    android:textColor="@color/accent" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -119,7 +104,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="300dp"
         android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="@color/lavender"
+        app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp">
     <com.denzcoskun.imageslider.ImageSlider
@@ -130,6 +115,7 @@
         app:iss_auto_cycle="true"
         app:iss_delay="1000"
         app:iss_corner_radius="20"
+        app:iss_no_dots="true"
         app:iss_title_background="@drawable/yerzhan"/>
     </androidx.cardview.widget.CardView>
 

@@ -366,10 +366,10 @@ public class ControlCenterv2 extends AppCompatActivity
                 Intent debugIntent = new Intent(this, DebugActivity.class);
                 startActivity(debugIntent);
                 return false;
-            case R.id.action_data_management:
-                Intent dbIntent = new Intent(this, DataManagementActivity.class);
-                startActivity(dbIntent);
-                return false;
+//            case R.id.action_data_management:
+//                Intent dbIntent = new Intent(this, DataManagementActivity.class);
+//                startActivity(dbIntent);
+//                return false;
             case R.id.action_notification_management:
                 Intent blIntent = new Intent(this, NotificationManagementActivity.class);
                 startActivity(blIntent);
