@@ -182,7 +182,7 @@
     <string name="pairing_already_bonded">Уже привязан к %1$s (%2$s), выполняется соединение…</string>
     <string name="message_cannot_pair_no_mac">MAC-адреса нет, сопряжение не удалось.</string>
     <string name="preferences_category_device_specific_settings">Настройки устройства</string>
-    <string name="preferences_miband_settings">Настройки Mi Band и Amazfit</string>
+    <string name="preferences_miband_settings">Настройки Mi Band</string>
     <string name="male">Мужчина</string>
     <string name="female">Женщина</string>
     <string name="other">Другой</string>

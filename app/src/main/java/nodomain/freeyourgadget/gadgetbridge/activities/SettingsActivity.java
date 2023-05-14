@@ -121,47 +121,47 @@ public class SettingsActivity extends AbstractSettingsActivity {
             }
         });
 
-        pref = findPreference("pref_key_qhybrid");
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                startActivity(new Intent(SettingsActivity.this, ConfigActivity.class));
-                return true;
-            }
-        });
+//        pref = findPreference("pref_key_qhybrid");
+//        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference) {
+//                startActivity(new Intent(SettingsActivity.this, ConfigActivity.class));
+//                return true;
+//            }
+//        });
 
-        pref = findPreference("pref_key_zetime");
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                Intent enableIntent = new Intent(SettingsActivity.this, ZeTimePreferenceActivity.class);
-                startActivity(enableIntent);
-                return true;
-            }
-        });
+//        pref = findPreference("pref_key_zetime");
+//        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            public boolean onPreferenceClick(Preference preference) {
+//                Intent enableIntent = new Intent(SettingsActivity.this, ZeTimePreferenceActivity.class);
+//                startActivity(enableIntent);
+//                return true;
+//            }
+//        });
 
-        pref = findPreference("pebble_emu_addr");
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newVal) {
-                Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(refreshIntent);
-                preference.setSummary(newVal.toString());
-                return true;
-            }
+//        pref = findPreference("pebble_emu_addr");
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object newVal) {
+//                Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
+//                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(refreshIntent);
+//                preference.setSummary(newVal.toString());
+//                return true;
+//            }
+//
+//        });
 
-        });
-
-        pref = findPreference("pebble_emu_port");
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newVal) {
-                Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(refreshIntent);
-                preference.setSummary(newVal.toString());
-                return true;
-            }
-
-        });
+//        pref = findPreference("pebble_emu_port");
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object newVal) {
+//                Intent refreshIntent = new Intent(DeviceManager.ACTION_REFRESH_DEVICELIST);
+//                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(refreshIntent);
+//                preference.setSummary(newVal.toString());
+//                return true;
+//            }
+//
+//        });
 
         pref = findPreference("log_to_file");
         pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -185,17 +185,17 @@ public class SettingsActivity extends AbstractSettingsActivity {
 
         });
 
-        pref = findPreference("cache_weather");
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newVal) {
-                boolean doEnable = Boolean.TRUE.equals(newVal);
-
-                Weather.getInstance().setCacheFile(getCacheDir(), doEnable);
-
-                return true;
-            }
-        });
+//        pref = findPreference("cache_weather");
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object newVal) {
+//                boolean doEnable = Boolean.TRUE.equals(newVal);
+//
+//                Weather.getInstance().setCacheFile(getCacheDir(), doEnable);
+//
+//                return true;
+//            }
+//        });
 
         // If we didn't manage to initialize file logging, disable the preference
         if (!GBApplication.getLogging().isFileLoggerInitialized()) {
@@ -283,80 +283,80 @@ public class SettingsActivity extends AbstractSettingsActivity {
             }
         });
 
-        pref = findPreference("weather_city");
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newVal) {
-                // reset city id and force a new lookup
-                GBApplication.getPrefs().getPreferences().edit().putString("weather_cityid", null).apply();
-                preference.setSummary(newVal.toString());
-                Intent intent = new Intent("GB_UPDATE_WEATHER");
-                intent.setPackage(BuildConfig.APPLICATION_ID);
-                sendBroadcast(intent);
-                return true;
-            }
-        });
+//        pref = findPreference("weather_city");
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object newVal) {
+//                // reset city id and force a new lookup
+//                GBApplication.getPrefs().getPreferences().edit().putString("weather_cityid", null).apply();
+//                preference.setSummary(newVal.toString());
+//                Intent intent = new Intent("GB_UPDATE_WEATHER");
+//                intent.setPackage(BuildConfig.APPLICATION_ID);
+//                sendBroadcast(intent);
+//                return true;
+//            }
+//        });
 
 
-        pref = findPreference(GBPrefs.AUTO_EXPORT_LOCATION);
-        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                Intent i = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-                i.setType("application/x-sqlite3");
-                i.addCategory(Intent.CATEGORY_OPENABLE);
-                i.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                String title = getApplicationContext().getString(R.string.choose_auto_export_location);
-                startActivityForResult(Intent.createChooser(i, title), FILE_REQUEST_CODE);
-                return true;
-            }
-        });
-        pref.setSummary(getAutoExportLocationSummary());
+//        pref = findPreference(GBPrefs.AUTO_EXPORT_LOCATION);
+//        pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            public boolean onPreferenceClick(Preference preference) {
+//                Intent i = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+//                i.setType("application/x-sqlite3");
+//                i.addCategory(Intent.CATEGORY_OPENABLE);
+//                i.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//                String title = getApplicationContext().getString(R.string.choose_auto_export_location);
+//                startActivityForResult(Intent.createChooser(i, title), FILE_REQUEST_CODE);
+//                return true;
+//            }
+//        });
+//        pref.setSummary(getAutoExportLocationSummary());
+//
+//        pref = findPreference(GBPrefs.AUTO_EXPORT_INTERVAL);
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object autoExportInterval) {
+//                String summary = String.format(
+//                        getApplicationContext().getString(R.string.pref_summary_auto_export_interval),
+//                        Integer.valueOf((String) autoExportInterval));
+//                preference.setSummary(summary);
+//                boolean auto_export_enabled = GBApplication.getPrefs().getBoolean(GBPrefs.AUTO_EXPORT_ENABLED, false);
+//                PeriodicExporter.scheduleAlarm(getApplicationContext(), Integer.valueOf((String) autoExportInterval), auto_export_enabled);
+//                return true;
+//            }
+//        });
+//        int autoExportInterval = GBApplication.getPrefs().getInt(GBPrefs.AUTO_EXPORT_INTERVAL, 0);
+//        String summary = String.format(
+//                getApplicationContext().getString(R.string.pref_summary_auto_export_interval),
+//                (int) autoExportInterval);
+//        pref.setSummary(summary);
 
-        pref = findPreference(GBPrefs.AUTO_EXPORT_INTERVAL);
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object autoExportInterval) {
-                String summary = String.format(
-                        getApplicationContext().getString(R.string.pref_summary_auto_export_interval),
-                        Integer.valueOf((String) autoExportInterval));
-                preference.setSummary(summary);
-                boolean auto_export_enabled = GBApplication.getPrefs().getBoolean(GBPrefs.AUTO_EXPORT_ENABLED, false);
-                PeriodicExporter.scheduleAlarm(getApplicationContext(), Integer.valueOf((String) autoExportInterval), auto_export_enabled);
-                return true;
-            }
-        });
-        int autoExportInterval = GBApplication.getPrefs().getInt(GBPrefs.AUTO_EXPORT_INTERVAL, 0);
-        String summary = String.format(
-                getApplicationContext().getString(R.string.pref_summary_auto_export_interval),
-                (int) autoExportInterval);
-        pref.setSummary(summary);
+//        findPreference(GBPrefs.AUTO_EXPORT_ENABLED).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object autoExportEnabled) {
+//                int autoExportInterval = GBApplication.getPrefs().getInt(GBPrefs.AUTO_EXPORT_INTERVAL, 0);
+//                PeriodicExporter.scheduleAlarm(getApplicationContext(), autoExportInterval, (boolean) autoExportEnabled);
+//                return true;
+//            }
+//        });
+//
+//        pref = findPreference("auto_fetch_interval_limit");
+//        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object autoFetchInterval) {
+//                String summary = String.format(
+//                        getApplicationContext().getString(R.string.pref_auto_fetch_limit_fetches_summary),
+//                        Integer.valueOf((String) autoFetchInterval));
+//                preference.setSummary(summary);
+//                return true;
+//            }
+//        });
 
-        findPreference(GBPrefs.AUTO_EXPORT_ENABLED).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object autoExportEnabled) {
-                int autoExportInterval = GBApplication.getPrefs().getInt(GBPrefs.AUTO_EXPORT_INTERVAL, 0);
-                PeriodicExporter.scheduleAlarm(getApplicationContext(), autoExportInterval, (boolean) autoExportEnabled);
-                return true;
-            }
-        });
-
-        pref = findPreference("auto_fetch_interval_limit");
-        pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object autoFetchInterval) {
-                String summary = String.format(
-                        getApplicationContext().getString(R.string.pref_auto_fetch_limit_fetches_summary),
-                        Integer.valueOf((String) autoFetchInterval));
-                preference.setSummary(summary);
-                return true;
-            }
-        });
-
-        int autoFetchInterval = GBApplication.getPrefs().getInt("auto_fetch_interval_limit", 0);
-        summary = String.format(
-                getApplicationContext().getString(R.string.pref_auto_fetch_limit_fetches_summary),
-                autoFetchInterval);
-        pref.setSummary(summary);
+//        int autoFetchInterval = GBApplication.getPrefs().getInt("auto_fetch_interval_limit", 0);
+//        summary = String.format(
+//                getApplicationContext().getString(R.string.pref_auto_fetch_limit_fetches_summary),
+//                autoFetchInterval);
+//        pref.setSummary(summary);
 
         // Get all receivers of Media Buttons
         Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
@@ -384,10 +384,10 @@ public class SettingsActivity extends AbstractSettingsActivity {
             i++;
         }
 
-        final ListPreference audioPlayer = (ListPreference) findPreference("audio_player");
-        audioPlayer.setEntries(newEntries);
-        audioPlayer.setEntryValues(newValues);
-        audioPlayer.setDefaultValue(newValues[0]);
+//        final ListPreference audioPlayer = (ListPreference) findPreference("audio_player");
+//        audioPlayer.setEntries(newEntries);
+//        audioPlayer.setEntryValues(newValues);
+//        audioPlayer.setDefaultValue(newValues[0]);
 
         final Preference theme = (ListPreference) findPreference("pref_key_theme");
         final Preference amoled_black = findPreference("pref_key_theme_amoled_black");

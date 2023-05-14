@@ -29,6 +29,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +40,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -106,7 +111,7 @@ public class ControlCenterv2 extends AppCompatActivity
     private FloatingActionButton fab;
     private boolean isLanguageInvalid = false;
     List<GBDevice> deviceList;
-    private  HashMap<String,long[]> deviceActivityHashMap = new HashMap();
+    private HashMap<String, long[]> deviceActivityHashMap = new HashMap();
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -169,6 +174,7 @@ public class ControlCenterv2 extends AppCompatActivity
                 this, drawer, toolbar, R.string.controlcenter_navigation_drawer_open, R.string.controlcenter_navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
 
         /* This sucks but for the play store we're not allowed a donation link. Instead for
         the Bangle.js Play Store app we put a message in the About dialog via @string/about_description */
@@ -580,8 +586,8 @@ public class ControlCenterv2 extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             final Context context = getContext();
             builder.setMessage(context.getString(R.string.permission_notification_policy_access,
-                    getContext().getString(R.string.app_name),
-                    getContext().getString(R.string.ok)))
+                            getContext().getString(R.string.app_name),
+                            getContext().getString(R.string.ok)))
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try {
@@ -603,8 +609,8 @@ public class ControlCenterv2 extends AppCompatActivity
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             final Context context = getContext();
             builder.setMessage(context.getString(R.string.permission_notification_listener,
-                                    getContext().getString(R.string.app_name),
-                                    getContext().getString(R.string.ok)))
+                            getContext().getString(R.string.app_name),
+                            getContext().getString(R.string.ok)))
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try {
@@ -634,7 +640,8 @@ public class ControlCenterv2 extends AppCompatActivity
                             startActivity(enableIntent);
                         }
                     }).setNegativeButton(R.string.dismiss, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {}
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
                     });
             return builder.create();
         }
