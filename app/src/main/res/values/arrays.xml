@@ -2342,8 +2342,8 @@
         <item>@string/p_sleep</item>
         <item>@string/p_sleep_week</item>
         <item>@string/p_steps_week</item>
-        <item>@string/p_speed_zones</item>
-        <item>@string/p_live_stats</item>
+<!--        <item>@string/p_speed_zones</item>-->
+<!--        <item>@string/p_live_stats</item>-->
     </string-array>
 
     <string-array name="pref_charts_tabs_items_default">

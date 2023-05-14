@@ -408,10 +408,10 @@ public class ChartsActivity extends AbstractGBFragmentActivity implements Charts
                     return new WeekSleepChartFragment();
                 case "stepsweek":
                     return new WeekStepsChartFragment();
-                case "speedzones":
-                    return new SpeedZonesFragment();
-                case "livestats":
-                    return new LiveActivityFragment();
+//                case "speedzones":
+//                    return new SpeedZonesFragment();
+//                case "livestats":
+//                    return new LiveActivityFragment();
             }
             return null;
         }
