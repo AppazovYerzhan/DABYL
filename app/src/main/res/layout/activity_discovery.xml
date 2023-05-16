@@ -70,28 +70,31 @@
             android:layout_gravity="bottom|top"
             android:layout_weight="0.83" />
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/discovery_note"
-            android:id="@+id/discovery_note"
-            android:textStyle="bold"
-            android:textColor="@color/secondarytext"
-            android:gravity="center_horizontal|bottom" />
+            android:hapticFeedbackEnabled="true">
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/auth_insert_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Auth key: " />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/auth_insert_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/discovery_connected_devices_hint"
-            android:id="@+id/discovery_hint"
-            android:textColor="@color/secondarytext"
-            android:textIsSelectable="true" />
+            android:layout_gravity="center"
+            android:text="Register band" />
 
         <Button
             android:id="@+id/discovery_preferences"
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/chart_not_worn_light"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_prefs_discovery_pairing" />
     </LinearLayout>
