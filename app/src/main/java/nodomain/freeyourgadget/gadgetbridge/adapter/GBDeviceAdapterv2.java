@@ -94,6 +94,7 @@ import nodomain.freeyourgadget.gadgetbridge.activities.ConfigureAlarms;
 import nodomain.freeyourgadget.gadgetbridge.activities.ConfigureReminders;
 import nodomain.freeyourgadget.gadgetbridge.activities.ControlCenterv2;
 import nodomain.freeyourgadget.gadgetbridge.activities.HeartRateDialog;
+import nodomain.freeyourgadget.gadgetbridge.activities.StressDialog;
 import nodomain.freeyourgadget.gadgetbridge.activities.OpenFwAppInstallerActivity;
 import nodomain.freeyourgadget.gadgetbridge.activities.VibrationActivity;
 import nodomain.freeyourgadget.gadgetbridge.activities.charts.ChartsActivity;
@@ -132,7 +133,6 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
     private ViewGroup parent;
     private HashMap<String, long[]> deviceActivityMap = new HashMap();
     private StableIdGenerator idGenerator = new StableIdGenerator();
-
     public GBDeviceAdapterv2(Context context, List<GBDevice> deviceList, HashMap<String,long[]> deviceMap) {
         super(new GBDeviceDiffUtil());
         this.context = context;
@@ -367,11 +367,21 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
                 batteryStatusLabels[batteryIndex].setVisibility(View.VISIBLE);
             }
         }
+
+        SharedPreferences sharedPreferences = ((ControlCenterv2) parent.getContext()).getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        if (!sharedPreferences.contains("prevRRi")) {
+            sharedPreferences.edit().putFloat("prevRRi",800);
+            sharedPreferences.edit().apply();
+        }
+
         holder.heartRateStatusBox.setVisibility((device.isInitialized() && coordinator.supportsRealtimeData() && coordinator.supportsManualHeartRateMeasurement(device)) ? View.VISIBLE : View.GONE);
+        holder.stressStatusBox.setVisibility((device.isInitialized() && coordinator.supportsRealtimeData() && coordinator.supportsManualHeartRateMeasurement(device)) ? View.VISIBLE : View.GONE);
         if (parent.getContext() instanceof ControlCenterv2) {
             ActivitySample sample = ((ControlCenterv2) parent.getContext()).getCurrentHRSample();
+
             if (sample != null) {
                 holder.heartRateStatusLabel.setText(String.valueOf(sample.getHeartRate()));
+                sharedPreferences.edit().putFloat("prevRRi", sample.getHeartRate());
             } else {
                 holder.heartRateStatusLabel.setText("");
             }
@@ -384,11 +394,38 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
             }
         }
 
+        if (parent.getContext() instanceof ControlCenterv2) {
+            ActivitySample sample = ((ControlCenterv2) parent.getContext()).getCurrentHRSample();
+            if (sample != null) {
+                holder.stressStatusLabel.setText(String.valueOf(Math.abs(60000/(double)sample.getHeartRate() - sharedPreferences.getFloat("prevRRi", 800))));
+                sharedPreferences.edit().putFloat("prevRRi", sample.getHeartRate());
+            } else {
+                holder.stressStatusLabel.setText("");
+            }
+
+            // Hide the level, if it has no text
+            if (TextUtils.isEmpty(holder.stressStatusLabel.getText())) {
+                holder.stressStatusLabel.setVisibility(View.GONE);
+            } else {
+                holder.stressStatusLabel.setVisibility(View.VISIBLE);
+            }
+        }
+
         holder.heartRateStatusBox.setOnClickListener(new View.OnClickListener() {
                                                          @Override
                                                          public void onClick(View v) {
                                                              GBApplication.deviceService(device).onHeartRateTest();
                                                              HeartRateDialog dialog = new HeartRateDialog(context);
+                                                             dialog.show();
+                                                         }
+                                                     }
+        );
+
+        holder.stressStatusBox.setOnClickListener(new View.OnClickListener() {
+                                                         @Override
+                                                         public void onClick(View v) {
+                                                             GBApplication.deviceService(device).onHeartRateTest();
+                                                             HeartRateDialog dialog = new HeartRateDialog(context); //FIXME stressDialog need to fixed
                                                              dialog.show();
                                                          }
                                                      }
@@ -880,6 +917,8 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
         menu.show();
     }
 
+
+
     private void showRemoveDeviceDialog(final GBDevice device) {
         new AlertDialog.Builder(context)
                 .setCancelable(true)
@@ -1136,6 +1175,9 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
         LinearLayout heartRateStatusBox;
         ImageView heartRateIcon;
         TextView heartRateStatusLabel;
+        LinearLayout stressStatusBox;
+        ImageView stressIcon;
+        TextView stressStatusLabel;
         FlexboxLayout infoIcons;
 
 
@@ -1203,6 +1245,10 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
             heartRateStatusBox = view.findViewById(R.id.device_heart_rate_status_box);
             heartRateStatusLabel = view.findViewById(R.id.heart_rate_status);
             heartRateIcon = view.findViewById(R.id.device_heart_rate_status);
+            stressStatusBox = view.findViewById(R.id.device_stress_status_box);
+            stressStatusLabel = view.findViewById(R.id.stress_status);
+            stressIcon = view.findViewById(R.id.device_stress_status);
+
             infoIcons = view.findViewById(R.id.device_info_icons);
 
             cardViewActivityCardLayout = view.findViewById(R.id.card_view_activity_card_layout);

@@ -1576,4 +1576,5 @@
     <string name="activity_db_management_autoexport_enabled_no">AutoExport is not enabled.</string>
     <string name="pref_device_action_fitness_app_control_start">Fitness App Tracking Start</string>
     <string name="pref_device_action_fitness_app_control_stop">Fitness App Tracking Stop</string>
+    <string name="stress_rate">Stress level</string>
 </resources>

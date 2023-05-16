@@ -1983,4 +1983,6 @@
     <string name="supercars_turbo_speed_label">Turbo Speed</string>
     <string name="supercars_lights_label">Lights</string>
     <string name="supercars_lights_blinking_label">Blinking</string>
+    <string name="controlcenter_get_stress_measurement" />
+    <string name="stress_rate">Stress level</string>
 </resources>
