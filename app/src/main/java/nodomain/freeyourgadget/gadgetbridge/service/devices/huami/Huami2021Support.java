@@ -404,7 +404,7 @@ public abstract class Huami2021Support extends HuamiSupport {
         try {
             final TransactionBuilder builder = performInitialized("HeartRateTest");
             enableNotifyHeartRateMeasurements(true, builder);
-            //writeToChunked2021(builder, CHUNKED2021_ENDPOINT_HEARTRATE, new byte[]{HEART_RATE_CMD_REALTIME_SET, HEART_RATE_REALTIME_MODE_START}, false);
+            writeToChunked2021(builder, CHUNKED2021_ENDPOINT_HEARTRATE, new byte[]{HEART_RATE_CMD_REALTIME_SET, HEART_RATE_REALTIME_MODE_START}, false);
             builder.queue(getQueue());
         } catch (final IOException e) {
             LOG.error("Unable to read heart rate from Huami 2021 device", e);

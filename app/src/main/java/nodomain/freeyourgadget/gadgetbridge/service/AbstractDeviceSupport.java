@@ -1,21 +1,3 @@
-/*  Copyright (C) 2015-2021 Andreas Böhler, Andreas Shimokawa, Carsten
-    Pfeiffer, Daniele Gobbetti, José Rebelo, Pauli Salmenrinne, Sebastian Kranz,
-    Taavi Eomäe
-
-    This file is part of Gadgetbridge.
-
-    Gadgetbridge is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published
-    by the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Gadgetbridge is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 package nodomain.freeyourgadget.gadgetbridge.service;
 
 import android.app.Notification;
@@ -25,6 +7,8 @@ import android.companion.CompanionDeviceManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -81,10 +65,6 @@ import nodomain.freeyourgadget.gadgetbridge.util.GB;
 
 import static nodomain.freeyourgadget.gadgetbridge.util.GB.NOTIFICATION_CHANNEL_HIGH_PRIORITY_ID;
 import static nodomain.freeyourgadget.gadgetbridge.util.GB.NOTIFICATION_CHANNEL_ID;
-
-// TODO: support option for a single reminder notification when notifications could not be delivered?
-// conditions: app was running and received notifications, but device was not connected.
-// maybe need to check for "unread notifications" on device for that.
 
 /**
  * Abstract implementation of DeviceSupport with some implementations for
@@ -238,8 +218,18 @@ public abstract class AbstractDeviceSupport implements DeviceSupport {
 
         PendingIntent pi = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        AssetManager assetManager = context.getAssets();
+        AssetFileDescriptor descriptor = null;
+        try {
+            descriptor = assetManager.openFd("app_assets/car_alarm_set.mp3");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Uri soundUri = Uri.parse(descriptor.getFileDescriptor().toString());
+
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_HIGH_PRIORITY_ID )
                 .setSmallIcon(R.drawable.ic_notification)
+                .setSound(soundUri)
                 .setOngoing(false)
                 .setFullScreenIntent(pi, true)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

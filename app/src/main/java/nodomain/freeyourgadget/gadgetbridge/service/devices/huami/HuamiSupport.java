@@ -278,6 +278,8 @@ import static nodomain.freeyourgadget.gadgetbridge.model.ActivityUser.PREF_USER_
 import static nodomain.freeyourgadget.gadgetbridge.model.ActivityUser.PREF_USER_YEAR_OF_BIRTH;
 import static nodomain.freeyourgadget.gadgetbridge.service.btle.GattCharacteristic.UUID_CHARACTERISTIC_ALERT_LEVEL;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public abstract class HuamiSupport extends AbstractBTLEDeviceSupport implements Huami2021Handler {
 
     // We introduce key press counter for notification purposes
@@ -1808,13 +1810,21 @@ public abstract class HuamiSupport extends AbstractBTLEDeviceSupport implements 
             case PREF_BUTTON_ACTION_SELECTION_FITNESS_APP_TOGGLE:
                 OpenTracksController.toggleRecording(this.getContext());
                 break;
+            case PREF_DEVICE_ACTION_FELL_SLEEP_SELECTION:
+                GB.toast("Person is sleeping...", Toast.LENGTH_SHORT, 1);
+                sendSystemBroadcast(message);
+                break;
+            case PREF_DEVICE_ACTION_START_NON_WEAR_SELECTION:
+                GB.toast("Person is not wearing Mi Band...", Toast.LENGTH_SHORT, 1);
+                sendSystemBroadcast(message);
+                break;
             default:
                 handleMediaButton(deviceAction);
         }
     }
 
     private void sendSystemBroadcast(String message){
-        if (message !=null) {
+        if (message != null) {
             Intent in = new Intent();
             in.setAction(message);
             LOG.info("Sending broadcast " + message);

@@ -31,6 +31,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.ArraySet;
+import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -367,26 +368,27 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
                 batteryStatusLabels[batteryIndex].setVisibility(View.VISIBLE);
             }
         }
-
+//        SharedPreferences.Editor editor = GBApplication.getDeviceSpecificSharedPrefs(device.getAddress()).edit();
         SharedPreferences sharedPreferences = ((ControlCenterv2) parent.getContext()).getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         if (!sharedPreferences.contains("prevRRi")) {
-            sharedPreferences.edit().putFloat("prevRRi",800);
-            sharedPreferences.edit().apply();
+            sharedPreferences.edit().putFloat("prevRRi",800).apply();
         }
 
         holder.heartRateStatusBox.setVisibility((device.isInitialized() && coordinator.supportsRealtimeData() && coordinator.supportsManualHeartRateMeasurement(device)) ? View.VISIBLE : View.GONE);
         holder.stressStatusBox.setVisibility((device.isInitialized() && coordinator.supportsRealtimeData() && coordinator.supportsManualHeartRateMeasurement(device)) ? View.VISIBLE : View.GONE);
+
         if (parent.getContext() instanceof ControlCenterv2) {
             ActivitySample sample = ((ControlCenterv2) parent.getContext()).getCurrentHRSample();
 
             if (sample != null) {
+                Log.d("SOMETAG", "SAMPLE IS NOT NULL!");
+
                 holder.heartRateStatusLabel.setText(String.valueOf(sample.getHeartRate()));
-                sharedPreferences.edit().putFloat("prevRRi", sample.getHeartRate());
             } else {
+                Log.d("SOMETAG", "SAMPLE IS NULL!");
                 holder.heartRateStatusLabel.setText("");
             }
 
-            // Hide the level, if it has no text
             if (TextUtils.isEmpty(holder.heartRateStatusLabel.getText())) {
                 holder.heartRateStatusLabel.setVisibility(View.GONE);
             } else {
@@ -397,13 +399,17 @@ public class GBDeviceAdapterv2 extends ListAdapter<GBDevice, GBDeviceAdapterv2.V
         if (parent.getContext() instanceof ControlCenterv2) {
             ActivitySample sample = ((ControlCenterv2) parent.getContext()).getCurrentHRSample();
             if (sample != null) {
-                holder.stressStatusLabel.setText(String.valueOf(Math.abs(60000/(double)sample.getHeartRate() - sharedPreferences.getFloat("prevRRi", 800))));
-                sharedPreferences.edit().putFloat("prevRRi", sample.getHeartRate());
+                float valueFromSP = sharedPreferences.getFloat("prevRRi", 800);
+                float RRi = 60000f/sample.getHeartRate();
+                String grade = String.valueOf(Math.max( (Math.abs((30 - (RRi - valueFromSP))/30 ) * 10) , 30));
+                holder.stressStatusLabel.setText(grade);
+                Log.d("myTag", "onBindViewHolder: " + valueFromSP);
+                Log.d("myTag", "RRI: " + grade);
+                sharedPreferences.edit().putFloat("prevRRi", RRi).apply();
             } else {
                 holder.stressStatusLabel.setText("");
             }
 
-            // Hide the level, if it has no text
             if (TextUtils.isEmpty(holder.stressStatusLabel.getText())) {
                 holder.stressStatusLabel.setVisibility(View.GONE);
             } else {

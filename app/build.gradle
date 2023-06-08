@@ -257,7 +257,7 @@ dependencies {
 //        exclude group:'com.google.firebase'
 //    }
 
-    // JSR-310 timezones backport for Android, since we're still API 21
+    // JSR-310 timezones backport for Android, since it is still API 21
     implementation 'com.jakewharton.threetenabp:threetenabp:1.4.0'
     testImplementation 'org.threeten:threetenbp:1.6.0'
 

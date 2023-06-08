@@ -1,20 +1,3 @@
-/*  Copyright (C) 2015-2020 Andreas Shimokawa, Carsten Pfeiffer, Daniele
-    Gobbetti, Pavel Elagin, vanous, Vebryn
-
-    This file is part of Gadgetbridge.
-
-    Gadgetbridge is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published
-    by the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Gadgetbridge is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 package nodomain.freeyourgadget.gadgetbridge.activities.charts;
 
 import org.slf4j.Logger;
@@ -36,6 +19,8 @@ public class ActivityAnalysis {
     // max speed determined from samples
     private int maxSpeed = 0;
 
+    public boolean isWorn = true;
+
     public ActivityAmounts calculateActivityAmounts(List<? extends ActivitySample> samples) {
         ActivityAmount deepSleep = new ActivityAmount(ActivityKind.TYPE_DEEP_SLEEP);
         ActivityAmount lightSleep = new ActivityAmount(ActivityKind.TYPE_LIGHT_SLEEP);
@@ -47,6 +32,7 @@ public class ActivityAnalysis {
         ActivitySample previousSample = null;
         for (ActivitySample sample : samples) {
             ActivityAmount amount;
+            isWorn = true;
             switch (sample.getKind()) {
                 case ActivityKind.TYPE_DEEP_SLEEP:
                     amount = deepSleep;
@@ -59,6 +45,7 @@ public class ActivityAnalysis {
                     break;
                 case ActivityKind.TYPE_NOT_WORN:
                     amount = notWorn;
+                    notifyDeviceNotWorn();
                     break;
                 case ActivityKind.TYPE_ACTIVITY:
                 default:
@@ -125,6 +112,12 @@ public class ActivityAnalysis {
         result.calculatePercentages();
 
         return result;
+    }
+
+    private void notifyDeviceNotWorn() {
+        LOG.debug("The device is not worn: ACTIVITY ANALYSIS");
+
+        isWorn = false;
     }
 
     int calculateTotalSteps(List<? extends ActivitySample> samples) {

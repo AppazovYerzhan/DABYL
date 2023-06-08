@@ -68,7 +68,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="My Pebble Watch" />
+                tools:text="My Mi Band" />
 
             <TextView
                 android:id="@+id/device_status"
